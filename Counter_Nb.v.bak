@@ -1,0 +1,15 @@
+module Counter_Nb(CLK,LOAD,E,D,IN,Q);
+	parameter n = 63;
+	input CLK, LOAD, E, D;
+	input [n:0] IN;
+	wire [n-1:0] C;
+	output [n-1:0] Q;
+	count1b co1(CLK,LOAD,E,D,IN[0],C[0],Q[0]);
+	genvar i;
+	generate
+	for (i = 1; i < n; i = i + 1) begin: countmid
+		count1b demx(CLK,LOAD,C[i-1],D,IN[i],C[i],Q[i]);
+	end
+	endgenerate
+	count1b demy(CLK,LOAD,C[n-1],D,IN[n],,Q[n]);
+endmodule

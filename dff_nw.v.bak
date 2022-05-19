@@ -1,0 +1,12 @@
+module dff_nw(Q,CLK,Reset,D);
+	input CLK,Reset,D;
+	output Q;
+	
+	wire N1,N2,N3,N4,Ox;
+	nand(N1,N4,N2);
+	nand(N2,N1,CLK,Reset);
+	nand(N3,N2,CLK,N4);
+	nand(N4,D,Reset);
+	nand(Q,N2,Ox);
+	nand(Ox,Q,N3,Reset);
+endmodule	

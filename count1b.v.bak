@@ -1,0 +1,5 @@
+module count1b(CLK,LOAD,E,D,IN.C,Q);
+	input CLK, LOAD, E, D, IN;
+	wire Q1, D01;
+	output wire C, Q;
+	HAS_nw has
